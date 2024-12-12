@@ -60,7 +60,7 @@ export function Page(): ReactElement {
     return () => {
       socket.off("new-data");
     };
-  }, []);
+  }, [limit]);
 
   const chartConfig = {
     desktop: {
