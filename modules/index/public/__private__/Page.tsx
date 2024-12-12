@@ -3,7 +3,7 @@
 import { getTimezones } from "@/modules/shared/api/getTimeZones";
 import socket from "@/utils/socket";
 import { useQuery } from "@tanstack/react-query";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, Suspense, useEffect, useState } from "react";
 import {
   NumberParam,
   StringParam,
