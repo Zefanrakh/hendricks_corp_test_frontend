@@ -34,7 +34,7 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
             <div className="bg-blue w-100 h-100"></div>
-            <Suspense>{children}</Suspense>
+            <>{children}</>
           </body>
         </html>
       </ReactQueryParamProvider>

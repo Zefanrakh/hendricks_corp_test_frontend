@@ -46,7 +46,7 @@ export function Page(): ReactElement {
   useEffect(() => {
     const fetchInitialData = async () => {
       const res = await fetch(
-        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/data?limit=${0}`
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/data?limit=${limit}`
       );
       const initialData: DataPoint[] = await res.json();
       setData(initialData.reverse());
