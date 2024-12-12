@@ -1,0 +1,30 @@
+import { vi } from "vitest";
+import { QueryObserverSuccessResult } from "@tanstack/react-query";
+
+export const mockUseQueryResult: QueryObserverSuccessResult = {
+  data: undefined,
+  dataUpdatedAt: 0,
+  error: null,
+  errorUpdatedAt: 0,
+  failureCount: 0,
+  isPaused: false,
+  isFetched: false,
+  isFetchedAfterMount: false,
+  isFetching: false,
+  isInitialLoading: true,
+  isPlaceholderData: false,
+  isRefetching: false,
+  isStale: false,
+  isError: false,
+  isPending: false,
+  isLoading: false,
+  isLoadingError: false,
+  isRefetchError: false,
+  isSuccess: true,
+  status: "success",
+  fetchStatus: "idle",
+  errorUpdateCount: 0,
+  failureReason: null,
+  refetch: vi.fn(),
+  promise: new Promise(() => {}),
+};
