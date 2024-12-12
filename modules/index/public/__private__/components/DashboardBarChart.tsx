@@ -8,12 +8,15 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
+  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
 import { useDashboardContext } from "../contexts/Context";
+import { GradientDefinitions } from "@/modules/shared/utils/GradientDefinitions";
 dayjs.extend(utc);
 dayjs.extend(timezone);
 
@@ -47,12 +50,40 @@ export function DashboardBarChart(): ReactElement {
             }}
             formatter={(value) => [`${value} °C`, `Temperature`]}
           />
-          <Bar
-            animationEasing="ease-in-out"
-            dataKey="value"
-            fill="#60a5fa"
-            radius={4}
+          {Array.from(Array(100).keys()).map((num) => (
+            <defs key={`graddef${num}`}>
+              <linearGradient
+                id={`grad${num}`}
+                x1="0%"
+                y1="100%"
+                x2="0%"
+                y2="0%"
+              >
+                <GradientDefinitions chartValue={num} />
+              </linearGradient>
+            </defs>
+          ))}
+          <Legend
+            verticalAlign="top"
+            payload={[
+              {
+                value: (
+                  <p className="text-gray-600 mb-2">
+                    Colors indicate temperature
+                  </p>
+                ),
+                legendIcon: <></>,
+              },
+            ]}
           />
+          <Bar animationEasing="ease-in-out" dataKey="value" radius={4}>
+            {data?.map(({ value }, index) => (
+              <>
+                {/* Use gradient definitions with the following format: grad + value. */}
+                <Cell key={`cell-${index}`} fill={`url(#grad${value})`}></Cell>
+              </>
+            ))}
+          </Bar>
         </BarChart>
       </ResponsiveContainer>
     </>
